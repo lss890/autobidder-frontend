@@ -1,21 +1,48 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
+import { render } from 'react-dom';
 import { StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
+import Toast from "react-native-toast-message";
+
+// Navigatiors
+import Main from "./Navigators/Main";
+
+import Header from "./Shared/Header";
+
+/*
+const RootStack = createStackNavigator ({
+  Login: { screen: Login },
+  Register: { screen: Register },
+},
+{
+  initialRouteName: "Login"
+});
+*/
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+      <NavigationContainer>
+        <Header />
+        <Main />
+        <Toast ref={(ref) => Toast.setRef(ref)} />
+      </NavigationContainer>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+/*
+const MyTheme = {
+  ...DefaultTheme,
+  colors: {
+    ...DefaultTheme.colors,
+    background: '#18657f',
   },
-});
+};
+*/
+
+/*
+export default class App extends Component {
+  render() {
+    return <UserNavigator />;
+  }
+}
+*/
